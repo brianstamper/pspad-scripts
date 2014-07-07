@@ -18,10 +18,8 @@ function KBLinkifyHandleList()
     var thisdoc = newEditor();
     thisdoc.assignActiveEditor();
     thistext = thisdoc.Text();
-    thistext = thistext.replace(/[^\r\w]/g, " "); // non-word into single space
     thistext = thistext.replace(/^\s*/gm, ""); // trim whitespace front
     thistext = thistext.replace(/\s*$/gm, ""); // trim whitespace back
-    thistext = thistext.replace(/[^\r\S]+/g, "%20"); // any space into single URL-encoded space
     thistext = thistext.replace(/^(.*?)$/gm, "<a href=\"https://kb.osu.edu/dspace/handle/$1?show=full\">$1</a><br />"); //build KB URL
 
     thisdoc.Text(thistext);
