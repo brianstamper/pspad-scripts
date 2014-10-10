@@ -1,12 +1,12 @@
 var module_name = "BatchPrepCombineColumns";
-var module_ver = "0.001";
+var module_ver = "0.002";
 /*
    (This is a script for the PSPad editor, see http://www.pspad.com/. I have no
    affiliation with the developers of PSPad. These scripts are offered as-is,
    use at your own risk.)
 
 
-   This takes multiple columns copied from an Excel sheet and merges them
+   This takes multiple columns copied from a metadata spreadsheet and merges them
    into a single column, with data separated by ||, as required by the SAFbuilder
    script. (See https://github.com/peterdietz/SAFBuilder/wiki)
 
@@ -30,11 +30,11 @@ function BatchPrepCombineColumns()
 
     thistext = thistext.replace(/^/gm, "\t"); // An extra tab at BOL catches other excess whitespace
     thistext = thistext.replace(/\t/gm, "||"); // replace tabs with ||
-    thistext = thistext.replace(/[^\r\S]+\|/gm, "|"); // trim whitespace before
-    thistext = thistext.replace(/\|[^\r\S]+/gm, "|"); // trim whitespace after
-    thistext = thistext.replace(/^\|*/gm, ""); // trim excess at BOL
-    thistext = thistext.replace(/\|*$/gm, ""); // trim excess at EOL
-    thistext = thistext.replace(/\|{3,}/gm, "||"); // trim excess middle (more than one pair)
+    thistext = thistext.replace(/[^\r\S]+\|\|/gm, "|"); // trim whitespace before any ||
+    thistext = thistext.replace(/\|\|[^\r\S]+/gm, "|"); // trim whitespace after any ||
+    thistext = thistext.replace(/^\|*/gm, ""); // trim excess || at BOL
+    thistext = thistext.replace(/\|*$/gm, ""); // trim excess || at EOL
+    thistext = thistext.replace(/\|{3,}/gm, "||"); // trim excess || in middle (more than one pair)
 
     thisdoc.Text(thistext);
 }
