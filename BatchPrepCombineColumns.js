@@ -30,8 +30,8 @@ function BatchPrepCombineColumns()
 
     thistext = thistext.replace(/^/gm, "\t"); // An extra tab at BOL catches other excess whitespace
     thistext = thistext.replace(/\t/gm, "||"); // replace tabs with ||
-    thistext = thistext.replace(/[^\r\S]+\|\|/gm, "|"); // trim whitespace before any ||
-    thistext = thistext.replace(/\|\|[^\r\S]+/gm, "|"); // trim whitespace after any ||
+    thistext = thistext.replace(/[^\r\S]+\|\|/gm, "||"); // trim whitespace before any ||
+    thistext = thistext.replace(/\|\|[^\r\S]+/gm, "||"); // trim whitespace after any ||
     thistext = thistext.replace(/^\|*/gm, ""); // trim excess || at BOL
     thistext = thistext.replace(/\|*$/gm, ""); // trim excess || at EOL
     thistext = thistext.replace(/\|{3,}/gm, "||"); // trim excess || in middle (more than one pair)
